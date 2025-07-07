@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Setting up the document and importing fonts -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdulaziz Alharbi - CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Styling for layout, colors, and responsiveness -->
+  <style>
+    :root {
+      --bg-light: #f2f4f7;
+      --text-light: #2c3e50;
+      --bg-dark: #1e1e1e;
+      --text-dark: #f2f2f2;
+      --primary: #1e3a8a;
+      --primary-dark: #90cdf4;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-light);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    /* Header at the top of the page */
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* Main content wrapper */
+    .container {
+      max-width: 900px;
+      margin: -40px auto 0;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 1;
+    }
+    body.dark-mode .container { background: #2b2b2b; }
+
+    /* Section titles that toggle content */
+    h2 {
+      color: var(--primary);
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: .5rem;
+      margin-top: 2rem;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s;
+    }
+    body.dark-mode h2 { color: var(--primary-dark); }
+
+    /* Little arrow beside each title */
+    h2::after {
+      content: '\25BC';
+      position: absolute;
+      right: 0;
+      transition: transform 0.2s;
+    }
+    h2.active::after { transform: rotate(180deg); }
+
+    /* The hidden content that opens when titles are clicked */
+    .content { display: none; padding-top: .5rem; }
+
+    /* Contact details formatted in two columns */
+    .info-block {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    /* Colored highlight for key labels like phone, email */
+    .highlight { font-weight: bold; color: var(--primary); }
+
+    /* The button for switching between light/dark mode */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.6rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .theme-toggle:hover {
+      background: #274cb8;
+      transform: scale(1.05);
+    }
+
+    /* Slight adjustment for smaller screens */
+    @media (max-width: 600px) {
+      .theme-toggle {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+
+  <!-- Handles dark mode toggle + section expansion when clicking headers -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('h2').forEach(h2 => {
+        h2.addEventListener('click', () => {
+          const content = h2.nextElementSibling;
+          if (content?.classList.contains('content')) {
+            const show = content.style.display !== 'block';
+            content.style.display = show ? 'block' : 'none';
+            h2.classList.toggle('active', show);
+          }
+        });
+      });
+      document.getElementById('theme-toggle').onclick = () => {
+        document.body.classList.toggle('dark-mode');
+      };
+    });
+  </script>
+</head>
+<body>
+  <!-- Button for switching color themes -->
+  <button id="theme-toggle" class="theme-toggle">Toggle Mode</button>
+
+  <!-- Page introduction: name + title -->
+  <header>
+    <h1>Abdulaziz Saud Alharbi</h1>
+    <p>Computer Science Student | Passionate about Tech & Problem Solving</p>
+  </header>
+
+  <!-- The main content area for all CV sections -->
+  <div class="container">
+
+    <!-- Basic contact information -->
+    <div class="info-block">
+      <div>
+        <p><span class="highlight">Phone:</span> 0551377067</p>
+        <p><span class="highlight">Email:</span> aziizsaud86o@gmail.com</p>
+      </div>
+      <div>
+        <p><span class="highlight">Location:</span> Alrass, Saudi Arabia</p>
+      </div>
+    </div>
+
+    <!-- Where and what I studied -->
+    <section>
+      <h2>Education</h2>
+      <div class="content">
+        <p><strong>Bachelor's of Computer Science</strong></p>
+        <p>Alqassem University, Alrass, Saudi Arabia</p>
+      </div>
+    </section>
+
+    <!-- Quick intro about who I am and what I do -->
+    <section>
+      <h2>Professional Summary</h2>
+      <div class="content">
+        <p>I am a Computer Science student with a passion for technology and problem-solving. I enjoy exploring new technologies and building small-scale academic projects. I am currently focusing on improving my programming skills and working on personal development through university coursework and online learning.</p>
+      </div>
+    </section>
+
+    <!-- My technical and soft skills -->
+    <section>
+      <h2>Skills</h2>
+      <div class="content">
+        <h3>Technical Skills</h3>
+        <ul>
+          <li>Programming: Proficient in Python, Java</li>
+          <li>Databases: Understanding of SQL and NoSQL (e.g., MySQL, MongoDB)</li>
+          <li>Operating Systems: Basic understanding of Linux and Windows</li>
+        </ul>
+        <h3>Soft Skills</h3>
+        <ul>
+          <li>Problem-Solving Ability</li>
+          <li>Logical & Analytical Thinking</li>
+          <li>Teamwork</li>
+          <li>Effective Communication</li>
+          <li>Self-Learning</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Languages I speak -->
+    <section>
+      <h2>Languages</h2>
+      <div class="content">
+        <ul>
+          <li>Arabic: Native</li>
+          <li>English: B2 (Upper Intermediate)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- A university project I worked on -->
+    <section>
+      <h2>Work History</h2>
+      <div class="content">
+        <p><strong>University Project</strong> – Computer Science Student, Alqassem University</p>
+        <p>Developed a personal CV website using HTML and CSS as part of a university course project. The site includes a responsive layout, structured content sections, and basic styling. This project helped reinforce practical skills in web development and project organization.</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
